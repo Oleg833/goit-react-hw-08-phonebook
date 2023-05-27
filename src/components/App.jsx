@@ -4,9 +4,9 @@ import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 
 import css from './App.module.css';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from 'redux/selectors';
+import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 import { Loader } from './Loader/Loader';
 
 const App = () => {
