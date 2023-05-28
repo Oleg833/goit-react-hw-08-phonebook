@@ -41,6 +41,7 @@ const getAction = type => arrThunks.map(el => el[type]);
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: initialContacts,
+
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.fulfilled, handleFulfilledGet)

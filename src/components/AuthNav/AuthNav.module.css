@@ -1,0 +1,24 @@
+.authContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.linkAuth {
+  color: burlywood;
+  text-decoration: none;
+  font-size: 20px;
+  transition: color 250ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  padding: 0 5px;
+}
+
+.active {
+  color: blueviolet;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0 5px;
+}
+
+.linkAuth:hover,
+.linkAuth:focus {
+  color: blueviolet;
+}

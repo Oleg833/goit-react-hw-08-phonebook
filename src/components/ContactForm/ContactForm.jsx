@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { nanoid } from 'nanoid';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/contactsOperations';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const { items, isLoading } = useSelector(selectContacts);
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -27,12 +27,11 @@ const ContactForm = () => {
     e.preventDefault();
 
     const contact = {
-      id: nanoid(),
       name,
       number,
     };
 
-    contacts.some(
+    items.some(
       i =>
         i.name.toLowerCase() === contact.name.toLowerCase() ||
         i.number === contact.number
@@ -79,7 +78,7 @@ const ContactForm = () => {
           required
         />
       </label>
-      <button type="submit" className={css.btn}>
+      <button type="submit" className={css.btn} disabled={isLoading}>
         Add contact
       </button>
     </form>
