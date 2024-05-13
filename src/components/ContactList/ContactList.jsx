@@ -31,11 +31,11 @@ const ContactList = ({ children }) => {
       <h2 className={css.contactsTitle}>Contacts</h2>
       {children}
       <ul className={css.contactList}>
-        {filteredContacts.map(({ id, name, number }) => {
+        {filteredContacts.map(({ id, name, phone }) => {
           return (
             <li key={id} className={css.item}>
               <p className={css.value}>
-                {name}: {number}
+                {name}: {phone}
               </p>
               <button
                 type="button"
@@ -58,7 +58,7 @@ ContactList.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
     })
   ),
 };

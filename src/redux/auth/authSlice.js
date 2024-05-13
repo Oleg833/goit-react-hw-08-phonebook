@@ -9,8 +9,9 @@ const initialStateAuth = {
 };
 
 const handleFulfilledAuth = (state, { payload }) => {
-  state.user = payload.user;
-  state.token = payload.token;
+  state.user.name = payload.name;
+  state.user.avatarURL = payload.avatarURL;
+  state.token = payload.token ? payload.token : null;
   state.isLoggedIn = true;
 };
 

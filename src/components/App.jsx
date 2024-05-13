@@ -14,6 +14,7 @@ const HomePage = lazy(() => import('pages/HomePage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
 const SignUpPage = lazy(() => import('pages/SignUpPage'));
 const LogInPage = lazy(() => import('pages/LogInPage'));
+const VerifyPage = lazy(() => import('pages/VerifyPage'));
 
 const App = () => {
   const { isRefreshing } = useSelector(selectAuth);
@@ -50,6 +51,14 @@ const App = () => {
               element={
                 <PublicRoute>
                   <LogInPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/verify/:code"
+              element={
+                <PublicRoute>
+                  <VerifyPage />
                 </PublicRoute>
               }
             />

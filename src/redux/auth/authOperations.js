@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'http://localhost:3003/api/';
 
 const token = {
   set(token) {
@@ -17,7 +17,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/users/signup', credentials);
+      const { data } = await axios.post('/users/register', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -36,6 +36,19 @@ export const logIn = createAsyncThunk(
       return data;
     } catch (error) {
       toast.error('You are not logged in. Try again.');
+      return thunkAPI.rejectWithValue(error.massage);
+    }
+  }
+);
+export const verify = createAsyncThunk(
+  'auth/verify',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/users/verify/${credentials}`);
+
+      return data;
+    } catch (error) {
+      toast.error('You are not verify. Try again.');
       return thunkAPI.rejectWithValue(error.massage);
     }
   }

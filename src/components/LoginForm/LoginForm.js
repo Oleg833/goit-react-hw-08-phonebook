@@ -12,7 +12,7 @@ const LogInForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { resetForm }) => {
-    await dispatch(logIn(values));
+    dispatch(logIn(values));
     resetForm();
   };
 
